@@ -8,11 +8,11 @@ import { Injectable } from '@nestjs/common';
 
 import {
   ITokenPayload,
-  PermissionAction,
-  PermissionSubject,
+  PermissionActionEnum,
+  PermissionSubjectEnum,
 } from '@/types/auth.type';
 
-export type PossibleAbilities = [PermissionAction, PermissionSubject];
+export type PossibleAbilities = [PermissionActionEnum, PermissionSubjectEnum];
 type Conditions = MongoQuery;
 export type AppAbility = MongoAbility<PossibleAbilities, Conditions>;
 

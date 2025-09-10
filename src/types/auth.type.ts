@@ -1,36 +1,36 @@
-export const PermissionAction = {
+export const PermissionActionEnum = {
   Manage: 'manage',
   Read: 'read',
   Create: 'create',
   Update: 'update',
   Delete: 'delete',
 } as const;
-export type PermissionAction =
-  (typeof PermissionAction)[keyof typeof PermissionAction];
+export type PermissionActionEnum =
+  (typeof PermissionActionEnum)[keyof typeof PermissionActionEnum];
 
-export const PermissionSubject = {
+export const PermissionSubjectEnum = {
   All: 'all',
   Story: 'story',
   User: 'user',
   Role: 'role',
   Permission: 'permission',
 } as const;
-export type PermissionSubject =
-  (typeof PermissionSubject)[keyof typeof PermissionSubject];
+export type PermissionSubjectEnum =
+  (typeof PermissionSubjectEnum)[keyof typeof PermissionSubjectEnum];
 
-export const Role = {
+export const RoleEnum = {
   ADMIN: '1',
   USER: '2',
 } as const;
-export type Role = (typeof Role)[keyof typeof Role];
+export type RoleType = (typeof RoleEnum)[keyof typeof RoleEnum];
 
 export interface ITokenPayload {
   email: string;
-  roleId: Role;
+  roleId: RoleType;
   id: string;
   permissions: Array<{
-    action: PermissionAction;
-    object: PermissionSubject;
+    action: PermissionActionEnum;
+    object: PermissionSubjectEnum;
   }>;
 }
 
@@ -38,7 +38,7 @@ export interface IThirdPartyLoginUser {
   email?: string;
   firstName?: string;
   lastName?: string;
-  accessToken: string;
+  accessToken?: string;
 }
 
 export interface IGoogleAuth {

@@ -4,13 +4,11 @@ export interface ISuccessMessage<T> {
   data?: T;
 }
 
-export const LanguageCodeEnum = {
+export const LanguageCode = {
   EN: 'en',
   VI: 'vi',
 } as const;
-
-export type LanguageCodeEnum =
-  (typeof LanguageCodeEnum)[keyof typeof LanguageCodeEnum];
+export type LanguageCode = (typeof LanguageCode)[keyof typeof LanguageCode];
 
 export interface ICatchError {
   message?: string;

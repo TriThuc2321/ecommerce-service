@@ -1,4 +1,4 @@
-import type { PermissionAction, PermissionSubject } from './auth.type';
+import type { PermissionActionEnum, PermissionSubjectEnum } from './auth.type';
 
 export interface IRole {
   id: string;
@@ -7,7 +7,7 @@ export interface IRole {
   canAccessCms: boolean;
   isActive: boolean;
   permissions: Array<{
-    action: PermissionAction;
-    subject: PermissionSubject;
+    action: PermissionActionEnum;
+    subject: PermissionSubjectEnum;
   }>;
 }
