@@ -1,0 +1,28 @@
+<div style='background-color: #f5f5f5; padding: 40px 0;'>
+  <div
+    style='font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px; background: white; color: #000; border-radius: 4px; border-top: 4px solid #49b7de'
+  >
+    <h2 style='color: #333;'>Welcome to Our Platform!</h2>
+
+    <p>Hello {{username}},</p>
+
+    <p>Thank you for registering with us. We're excited to have you on board!</p>
+
+    <p>You need to activate your account to access all our features in 2 hours.</p>
+
+    <div style='margin: 30px 0; text-align: center; width: 100%;'>
+      <a
+        href='{{activeUrl}}'
+        style='display: inline-block; background-color: #007bff; color: white; padding: 12px 24px; text-decoration: none; border-radius: 4px;'
+      >
+        Activate Your Account
+      </a>
+    </div>
+
+    <p>If you have any questions or need assistance, please don't hesitate to
+      contact our support team.</p>
+
+    {{> signature}}
+  </div>
+
+</div>
