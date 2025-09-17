@@ -11,7 +11,7 @@ import { Role } from './role.entity';
 
 @Entity('permissions_roles', { schema: 'public' })
 export class PermissionRole {
-  @PrimaryGeneratedColumn('uuid', { name: 'permission_role_id' })
+  @PrimaryGeneratedColumn('increment', { name: 'permission_role_id' })
   id!: string;
 
   @Column({ name: 'role_id', type: 'uuid', nullable: false })

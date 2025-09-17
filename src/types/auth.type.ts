@@ -39,6 +39,7 @@ export interface IThirdPartyLoginUser {
   firstName?: string;
   lastName?: string;
   accessToken?: string;
+  avatar?: string;
 }
 
 export interface IGoogleAuth {
@@ -47,6 +48,7 @@ export interface IGoogleAuth {
     familyName: string;
   };
   emails: [{ value: string }];
+  picture: string;
 }
 
 export interface IRequestWithUser extends Request {

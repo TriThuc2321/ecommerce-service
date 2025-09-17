@@ -217,7 +217,8 @@ export class AuthService {
       );
     }
 
-    const { email, firstName, lastName } = req.user as IThirdPartyLoginUser;
+    const { email, firstName, lastName, avatar } =
+      req.user as IThirdPartyLoginUser;
 
     const where = [
       ...(email ? [{ email, auditMetadata: { deletedAt: IsNull() } }] : []),
@@ -237,6 +238,7 @@ export class AuthService {
         roleId: RoleEnum.USER,
         password: '',
         provider,
+        avatar,
         createdAt: dayjs(),
       });
     }

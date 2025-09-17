@@ -4,7 +4,7 @@ import { AuditMetadata } from './audit-metadata.entity';
 
 @Entity('permissions', { schema: 'public' })
 export class Permission {
-  @PrimaryGeneratedColumn('uuid', { name: 'permission_id' })
+  @PrimaryGeneratedColumn('increment', { name: 'permission_id' })
   id!: string;
 
   @Column({ name: 'action', type: 'varchar', length: 255 })

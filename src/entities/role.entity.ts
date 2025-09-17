@@ -13,7 +13,7 @@ import { User } from './user.entity';
 
 @Entity('roles', { schema: 'public' })
 export class Role {
-  @PrimaryGeneratedColumn('uuid', { name: 'role_id' })
+  @PrimaryGeneratedColumn('increment', { name: 'role_id' })
   id!: string;
 
   @Column({ type: 'varchar', length: 255 })

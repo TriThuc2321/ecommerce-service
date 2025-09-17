@@ -7,6 +7,8 @@ import { MailModule } from './shared/mail/mail.module';
 import { CmsRolesModule } from './modules/cms-roles/cms-roles.module';
 import { RolesModule } from './modules/roles/roles.module';
 import { AuthModule } from './modules/auth/auth.module';
+import { CmsUsersModule } from './modules/cms-users/cms-users.module';
+import { ProfileModule } from './modules/profile/profile.module';
 
 @Module({
   imports: [
@@ -39,6 +41,8 @@ import { AuthModule } from './modules/auth/auth.module';
     MailModule,
     CmsRolesModule,
     RolesModule,
+    CmsUsersModule,
+    ProfileModule,
   ],
   controllers: [],
   providers: [],

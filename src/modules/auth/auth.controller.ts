@@ -17,9 +17,15 @@ import { Response } from 'express';
 
 import { AuthService } from '@/modules/auth/auth.service';
 import { Public } from '@/modules/auth/decorators/public.decorator';
-import { IRequestWithUser, Provider } from '@/types';
+import {
+  IRequestWithUser,
+  PermissionActionEnum,
+  PermissionSubjectEnum,
+  Provider,
+} from '@/types';
 
 import { LoginDto, RefreshTokenDto, RegisterDto } from './dto';
+import { CheckPermissions, GetUser } from './decorators';
 
 @Controller('auth')
 @ApiTags('Auth')
@@ -38,36 +44,6 @@ export class AuthController {
     return this.authService.login(signInDto, res);
   }
 
-  // @HttpCode(HttpStatus.OK)
-  // @Post('/check-code')
-  // reSendMai(@Body() dto: CodeDto) {
-  //   return this.authService.verified(dto);
-  // }
-
-  // @HttpCode(HttpStatus.OK)
-  // @Get('/active-account/:code')
-  // activeAccount(
-  //   @Param('code') code: string,
-  //   @Res({ passthrough: true }) res: Response,
-  // ) {
-  //   return this.authService.activeAccount(res, code);
-  // }
-
-  // @HttpCode(HttpStatus.OK)
-  // @Post('/forgot-password')
-  // @Throttle({
-  //   short: { limit: 3, ttl: 20_000 },
-  // })
-  // forgotPassword(@Body(ValidationPipe) dto: GetPasswordDto) {
-  //   return this.authService.forgotPassword(dto);
-  // }
-
-  // @HttpCode(HttpStatus.OK)
-  // @Post('/reset-password')
-  // resetPassword(@Body(ValidationPipe) dto: ResetPasswordDto) {
-  //   return this.authService.resetPassword(dto);
-  // }
-
   @HttpCode(HttpStatus.OK)
   @Post('refresh-token')
   @ApiOperation({ summary: 'Refresh Token' })
@@ -84,15 +60,6 @@ export class AuthController {
     return this.authService.register(dto);
   }
 
-  // @HttpCode(HttpStatus.OK)
-  // @Throttle({
-  //   short: { limit: 3, ttl: 20_000 },
-  // })
-  // @Post('re-active-account')
-  // reActiveAccount(@Body() dto: ReActiveAccountDto) {
-  //   return this.authService.reActiveAccount(dto);
-  // }
-
   @Get('google')
   @UseGuards(AuthGuard('google'))
   async googleAuth() {}
@@ -104,6 +71,13 @@ export class AuthController {
     @Res({ passthrough: true }) res: Response,
   ) {
     return this.authService.thirdPartyLogin(req, res, Provider.GOOGLE);
+  }
+
+  @HttpCode(HttpStatus.OK)
+  @CheckPermissions([PermissionActionEnum.Create, PermissionSubjectEnum.User])
+  @Get('profile')
+  profile(@GetUser('id') userId: string) {
+    return this.authService.getUserById(userId);
   }
 
   @HttpCode(HttpStatus.OK)

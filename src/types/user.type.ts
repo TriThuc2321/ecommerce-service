@@ -13,3 +13,13 @@ export interface IGetUserProfileResponse {
   role: { id: string; name: string };
   permissions: Array<{ action: string; subject: string }>;
 }
+
+export interface IUser {
+  id: string;
+  email: string;
+  firstName: string;
+  lastName: string;
+  avatar: string;
+  roleId: string;
+  emailVerified: boolean;
+}
