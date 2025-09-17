@@ -48,7 +48,7 @@ export interface IGoogleAuth {
     familyName: string;
   };
   emails: [{ value: string }];
-  picture: string;
+  photos: { value: string }[];
 }
 
 export interface IRequestWithUser extends Request {

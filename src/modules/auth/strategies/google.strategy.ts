@@ -22,14 +22,14 @@ export class GoogleStrategy extends PassportStrategy(Strategy, 'google') {
     profile: IGoogleAuth,
     cb: VerifyCallback,
   ) {
-    const { name, emails, picture } = profile;
+    const { name, emails, photos } = profile;
     const { givenName, familyName } = name;
 
     const user: IThirdPartyLoginUser = {
       email: emails[0].value,
       firstName: givenName,
       lastName: familyName,
-      avatar: picture,
+      avatar: photos?.[0]?.value,
       accessToken,
     };
 
